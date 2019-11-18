@@ -6,7 +6,7 @@
 /*   By: ahaloua <ahaloua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 20:42:34 by ahaloua           #+#    #+#             */
-/*   Updated: 2019/11/10 15:44:31 by ahaloua          ###   ########.fr       */
+/*   Updated: 2019/11/18 01:14:28 by ahaloua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,15 @@ int main(int argc, char **argv)
     int i;
     t_bool stat;
 
-    st.x = 10;
-    st.y = 900;
-    fn.x = 500;
-    fn.y = 10;
-
     i = 0;
     map.ptr = mlx_init();
     map.win = mlx_new_window(map.ptr, 2500, 1400, "Qsnake");
     ft_checkmap(argv[1], &map);
-    /*
-    cord = (t_cord **)malloc(sizeof(t_cord *) * map.height);
-    while (i < map.height)
-    {
-        cord[i] = (t_cord *)malloc(sizeof(t_cord) * map.width);
-        i++;
-    }
-    */
+	ft_error(argc, argv, ft_checkmap(argv[1], &map));
     cord = ft_create_map(map);
     ft_store_data(argv[1], cord, &map);
     ft_iso_shit(&map, cord);
     ft_draw_data(cord, map);
-    // ft_draw_line(st, fn, &map, B_COLOR);
     mlx_loop(map.ptr);
     return (0);
 }
